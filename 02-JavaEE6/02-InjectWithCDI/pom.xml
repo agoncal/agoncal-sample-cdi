@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.agoncal.sample.injection</groupId>
+    <artifactId>with-cdi</artifactId>
+    <version>1.0</version>
+    <packaging>war</packaging>
+    <name>02-02 - Injecting Java EE 6 artifacts with @Inject</name>
+
+    <parent>
+        <groupId>org.agoncal.sample.cdi.javaee6</groupId>
+        <artifactId>javaee6-parent</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.glassfish.main.extras</groupId>
+            <artifactId>glassfish-embedded-all</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>sampleCdiInjectWithCDI</finalName>
+        <plugins>
+            <!-- Run mvn clean package embedded-glassfish:run -->
+            <!-- and go to http://localhost:8080/sampleCdiInjectWithCDI/ -->
+            <plugin>
+                <groupId>org.glassfish</groupId>
+                <artifactId>maven-embedded-glassfish-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.agoncal.sample.cdi.inject</groupId>
+    <artifactId>injection-attribute</artifactId>
+    <version>1.0</version>
+    <packaging>war</packaging>
+    <name>04-01 - Injection point on attributes in CDI</name>
+
+    <parent>
+        <groupId>org.agoncal.sample.cdi.injection</groupId>
+        <artifactId>injection2-parent</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.glassfish.main.extras</groupId>
+            <artifactId>glassfish-embedded-all</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>sampleCdiInjectPartIIAttribute</finalName>
+        <plugins>
+            <!-- Run mvn clean package embedded-glassfish:run -->
+            <!-- and go to http://localhost:8080/sampleCdiInjectPartIIAttribute/ -->
+            <plugin>
+                <groupId>org.glassfish</groupId>
+                <artifactId>maven-embedded-glassfish-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
