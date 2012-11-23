@@ -1,17 +1,12 @@
-# Sample - CDI - Bootstrapping
+# Samples - CDI
 
-## Purpose of this sample
+Several samples about EJBs : 
 
-The purpose of this sample is to show you how to bootstrap CDI (Weld) in several ways :
-
-* Using EJBs 3.1 in GlassFish 3.x
-* Using Servlets 3.0 in GlassFish 3.x
-* In Java SE 6
-* Using Servlets 2.5 in Tomcat 6
-* Using Servlets 2.5 in Jetty 6
-* Using Servlets 2.5 in Jetty 7
-
-[Read more on my blog](http://antoniogoncalves.org/2011/01/12/bootstrapping-cdi-in-several-environments/)
+* 01-Bootstrapping : Bootstrap CDI in several environments
+* 02-JavaEE6 : Differences between Java EE inection (@Resource…) and CDI @Inject
+* 03-Injection : CDI injection with qualifiers
+* 04-Injection : Different injection points (attributes, setter, constructor)
+* 05-Producers : CDI producers
 
 # Licensing
 
