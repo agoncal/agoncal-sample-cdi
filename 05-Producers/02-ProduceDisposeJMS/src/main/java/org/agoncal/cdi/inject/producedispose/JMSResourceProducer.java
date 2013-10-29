@@ -14,6 +14,8 @@ public class JMSResourceProducer {
     @Resource(name = "jms/OrderConnectionFactory")
     private QueueConnectionFactory orderConnectionFactory;
     @Resource(name = "jms/OrderQueue")
+    @Produces
+    @Order
     private Queue orderQueue;
 
     // You can either have two methods refering each other (for producers & disposers)

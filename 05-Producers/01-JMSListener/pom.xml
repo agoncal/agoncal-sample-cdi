@@ -8,7 +8,7 @@
     <artifactId>jms-listener</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
-    <name>05-01 - JMS Lister</name>
+    <name>05-01 - JMS Listener</name>
 
     <parent>
         <groupId>org.agoncal.sample.cdi.producer</groupId>
