@@ -6,10 +6,15 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import javax.ejb.embeddable.EJBContainer;
+import javax.enterprise.inject.spi.Bean;
+import javax.enterprise.inject.spi.BeanManager;
+import javax.enterprise.inject.spi.CDI;
+import javax.enterprise.util.AnnotationLiteral;
 import javax.naming.Context;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNull;
@@ -90,5 +95,24 @@ public class MainEJBTest {
         // Checks that there is an extra book in the database
         assertEquals("Should have an extra book", itemEJB.findAllBooks().size(), nbBooks + 2);
         assertEquals("Should have the same amount of scifi books", itemEJB.findAllScifiBooks().size(), nbScifiBooks + 1);
+    }
+
+    @Test
+    public void shouldCheckEightDigitsBeans() throws Exception {
+
+        BeanManager beanManager = CDI.current().getBeanManager();
+        assertNotNull(beanManager);
+
+        Set<Bean<?>> allEightDigitsBeans = beanManager.getBeans(Object.class, new AnnotationLiteral<EightDigits>() {
+        });
+        assertEquals("Set should just have the IssnGenerator", 1, allEightDigitsBeans.size());
+
+        Bean issnGenerator = allEightDigitsBeans.iterator().next();
+        assertEquals("class org.agoncal.sample.cdi.inject.qualifier.IssnGenerator", issnGenerator.getBeanClass().toString());
+        assertEquals("Should have @EightDigits and @Any", 2, issnGenerator.getQualifiers().size());
+        assertEquals("IssnGenerator has no injection point", 0, issnGenerator.getInjectionPoints().size());
+        assertEquals("Should be the default scope which is Dependent", "interface javax.enterprise.context.Dependent", issnGenerator.getScope().toString());
+        assertEquals("IssnGenerator has no stereotypes", 0, issnGenerator.getStereotypes().size());
+        assertEquals("Should be NumberGenerator, Object and IssnGenerator", 3, issnGenerator.getTypes().size());
     }
 }
