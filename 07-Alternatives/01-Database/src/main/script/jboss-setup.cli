@@ -1,0 +1,20 @@
+
+# ####################
+# #  JDBC Drivers
+# ####################
+
+# First you need to copy the Derby and Postgre jar into
+#   * modules/system/layers/base/org/apache/derby/main
+#   * modules/system/layers/base/org/postgresql/main
+
+/subsystem=datasources/jdbc-driver=derby:add(driver-name=derby, driver-module-name=org.apache.derby, driver-class-name=org.apache.derby.jdbc.ClientDriver)
+/subsystem=datasources/jdbc-driver=postgres:add(driver-name=postgres, driver-module-name=org.postgresql, driver-class-name=org.postgresql.Driver)
+
+
+# ####################
+# #  Datasources
+# ####################
+
+/subsystem=datasources/data-source=H2DS:add(driver-name=h2, user-name=sa, password=sa, connection-url="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE", jndi-name=java:/global/datasources/H2DS, enabled=true)
+/subsystem=datasources/data-source=DerbyDS:add(driver-name=derby, user-name=app, password=app, connection-url="jdbc:derby://localhost:1527/sample;create=true", jndi-name=java:/global/datasources/DerbyDS, enabled=true)
+/subsystem=datasources/data-source=PostgresDS:add(driver-name=postgres, user-name=postgres, password=postgres, connection-url="jdbc:postgresql://localhost:5432/postgres", jndi-name=java:/global/datasources/PostgresDS, enabled=true)

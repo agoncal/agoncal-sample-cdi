@@ -1,0 +1,15 @@
+
+# ####################
+# #  JDBC Drivers
+# ####################
+
+/subsystem=datasources/jdbc-driver=derby:remove
+/subsystem=datasources/jdbc-driver=postgres:remove
+
+# ####################
+# #  Datasources
+# ####################
+
+/subsystem=datasources/data-source=H2DS:remove
+/subsystem=datasources/data-source=DerbyDS:remove
+/subsystem=datasources/data-source=PostgresDS:remove

@@ -1,0 +1,24 @@
+version
+
+# ####################
+# #  System Properties
+# ####################
+/core-service=platform-mbean/type=runtime:read-attribute(name=input-arguments)
+/core-service=platform-mbean/type=runtime:read-attribute(name=system-properties)
+
+# ####################
+# #  Datasources
+# ####################
+/subsystem=datasources/data-source=H2DS:read-resource
+/subsystem=datasources/data-source=H2DS:test-connection-in-pool
+/subsystem=datasources/data-source=DerbyDS:read-resource
+/subsystem=datasources/data-source=DerbyDS:test-connection-in-pool
+/subsystem=datasources/data-source=PostgresDS:read-resource
+/subsystem=datasources/data-source=PostgresDS:test-connection-in-pool
+
+# ####################
+# #  JDBC Drivers
+# ####################
+/subsystem=datasources/jdbc-driver=h2:read-resource
+/subsystem=datasources/jdbc-driver=derby:read-resource
+/subsystem=datasources/jdbc-driver=postgres:read-resource
