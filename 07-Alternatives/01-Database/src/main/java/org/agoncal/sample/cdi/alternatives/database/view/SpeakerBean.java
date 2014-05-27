@@ -2,15 +2,10 @@ package org.agoncal.sample.cdi.alternatives.database.view;
 
 import org.agoncal.sample.cdi.alternatives.database.model.Speaker;
 
-import javax.annotation.Resource;
-import javax.ejb.SessionContext;
-import javax.ejb.Stateful;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -19,6 +14,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +30,7 @@ import java.util.List;
  */
 
 @Named
-@Stateful
+@Transactional
 @ConversationScoped
 public class SpeakerBean implements Serializable {
 
@@ -95,7 +91,7 @@ public class SpeakerBean implements Serializable {
     }
 
 	/*
-	 * Support updating and deleting Speaker entities
+     * Support updating and deleting Speaker entities
 	 */
 
     public String update() {
@@ -233,39 +229,6 @@ public class SpeakerBean implements Serializable {
         return this.entityManager.createQuery(
                 criteria.select(criteria.from(Speaker.class))).getResultList();
     }
-
-    @Resource
-    private SessionContext sessionContext;
-
-    public Converter getConverter() {
-
-        final SpeakerBean ejbProxy = this.sessionContext.getBusinessObject(SpeakerBean.class);
-
-        return new Converter() {
-
-            @Override
-            public Object getAsObject(FacesContext context,
-                                      UIComponent component, String value) {
-
-                return ejbProxy.findById(java.lang.Long.valueOf(value));
-            }
-
-            @Override
-            public String getAsString(FacesContext context,
-                                      UIComponent component, Object value) {
-
-                if (value == null) {
-                    return "";
-                }
-
-                return String.valueOf(((Speaker) value).getId());
-            }
-        };
-    }
-
-	/*
-	 * Support adding children to bidirectional, one-to-many tables
-	 */
 
     private Speaker add = new Speaker();
 

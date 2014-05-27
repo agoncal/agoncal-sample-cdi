@@ -11,16 +11,16 @@ public class DatabaseProducer {
     @PersistenceContext(unitName = "alternative-test-pu")
     private EntityManager entityManagerTest;
 
-    @Produces
-    @Alternative
-    @DevDatabase
-    @PersistenceContext(unitName = "alternative-dev-pu")
-    private EntityManager entityManagerDev;
-
-    @Produces
-    @Alternative
-    @ProdDatabase
-    @PersistenceContext(unitName = "alternative-prod-pu")
-    private EntityManager entityManagerProd;
-
+//    @Produces
+//    @Alternative
+//    @DevDatabase
+//    @PersistenceContext(unitName = "alternative-dev-pu")
+//    private EntityManager entityManagerDev;
+//
+//    @Produces
+//    @Alternative
+//    @ProdDatabase
+//    @PersistenceContext(unitName = "alternative-prod-pu")
+//    private EntityManager entityManagerProd;
+//
 }

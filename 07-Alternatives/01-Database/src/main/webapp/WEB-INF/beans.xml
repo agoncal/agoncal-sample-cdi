@@ -6,8 +6,8 @@
     <!--<alternatives>-->
         <!--<stereotype>org.agoncal.sample.cdi.alternatives.database.cdi.ProdDatabase</stereotype>-->
     <!--</alternatives>-->
-    <alternatives>
-        <stereotype>org.agoncal.sample.cdi.alternatives.database.cdi.DevDatabase</stereotype>
-    </alternatives>
+    <!--<alternatives>-->
+        <!--<stereotype>org.agoncal.sample.cdi.alternatives.database.cdi.DevDatabase</stereotype>-->
+    <!--</alternatives>-->
 
 </beans>
