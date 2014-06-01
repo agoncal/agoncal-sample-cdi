@@ -18,3 +18,8 @@
 /subsystem=datasources/data-source=H2DS:add(driver-name=h2, user-name=sa, password=sa, connection-url="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE", jndi-name=java:/global/datasources/H2DS, enabled=true)
 /subsystem=datasources/data-source=DerbyDS:add(driver-name=derby, user-name=app, password=app, connection-url="jdbc:derby://localhost:1527/sample;create=true", jndi-name=java:/global/datasources/DerbyDS, enabled=true)
 /subsystem=datasources/data-source=PostgresDS:add(driver-name=postgres, user-name=postgres, password=postgres, connection-url="jdbc:postgresql://localhost:5432/postgres", jndi-name=java:/global/datasources/PostgresDS, enabled=true)
+
+# You can either have enabled=true or enable it as follow
+/subsystem=datasources/data-source=H2DS:enable
+/subsystem=datasources/data-source=DerbyDS:enable
+/subsystem=datasources/data-source=PostgresDS:enable
